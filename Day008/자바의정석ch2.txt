@@ -1,0 +1,67 @@
+2-1
+	1byte	2byte	4byte	8byte
+논리형	boolean
+문자형		char
+정수형	byte	short	int	long
+실수형			float	double
+
+2-2
+long regNo = 0105224444444L;
+
+2-3
+리터럴 : 100, 100L, 3.14f
+변수 : i, l
+키워드 : int, long, final, float
+상수 : PI
+
+2-4
+b. Byte
+
+2-5
+12
+true
+131
+51
+99
+Java
+오류
+
+2-6
+b. True
+c. NULL
+d. Class
+e. System
+
+2-7
+a. $ystem
+d. If
+e. 자바
+g. $MAX_NUM
+
+2-8
+a. int
+d. float
+
+2-9
+d. float f = (float)l;
+e. i = (int)ch;
+
+2-10 
+2^16
+
+2-11
+a. byte b = 256;
+b. char c = '';
+c. char answer = 'no';
+d. float f = 3.14
+
+2-12
+a. public static void main(String[] args)
+b. public static void main(String args[])
+c. public static void main(String[] arv)
+e. static public void main(String[] args)
+
+2-13
+c. float - 0.0
+e. long - 0
+f. String - ""
