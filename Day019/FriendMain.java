@@ -67,11 +67,7 @@ class FriendMain {
                 case SHOW_BASIC_DATA:
                     if (count > 0) {
                         for (int i = 0; i < count; i++) {
-                            if (arr[i] instanceof HighFriend) {
-                                ((HighFriend) arr[i]).showBasicInfo();
-                            }else if (arr[i] instanceof UnivFriend) {
-                                ((UnivFriend) arr[i]).showBasicInfo();
-                            }
+                            arr[i].showBasicInfo();
                             System.out.println();
                         }
                     } else {
@@ -100,6 +96,7 @@ class Friend {
         System.out.println("전화번호 : " + phone);
         System.out.println("주소 : " + address);
     }
+    public void showBasicInfo() {}
 
     public void showBasicInfoName() {
         System.out.println("이름 : " + name);
