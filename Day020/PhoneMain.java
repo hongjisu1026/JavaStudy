@@ -64,7 +64,7 @@ class PhoneInfo {
     }
 }
 
-class PhoneUnivInfo extends PhoneInfo{
+class PhoneUnivInfo extends PhoneInfo {
     String major, year;
 
     PhoneUnivInfo(String name, String phone, String major, String year) {
@@ -80,7 +80,7 @@ class PhoneUnivInfo extends PhoneInfo{
     }
 }
 
-class PhoneCompanyInfo extends PhoneInfo{
+class PhoneCompanyInfo extends PhoneInfo {
     String company;
 
     PhoneCompanyInfo(String name, String phone, String company) {
@@ -109,8 +109,8 @@ class PhoneBook {
 
     //대학친구 데이터 입력
     public boolean saveUnivData(String name, String phone, String major, String year) {
-        if(count > 100) {
-            return  false;
+        if (count > 100) {
+            return false;
         }
         insertionSort(new PhoneUnivInfo(name, phone, major, year));
         return true;
@@ -118,7 +118,7 @@ class PhoneBook {
 
     //직장 동료 데이터 입력
     public boolean saveCompanyData(String name, String phone, String company) {
-        if(count > 100) {
+        if (count > 100) {
             return false;
         }
         insertionSort(new PhoneCompanyInfo(name, phone, company));
@@ -128,12 +128,22 @@ class PhoneBook {
     // 삽입정렬 메소드
     public void insertionSort(PhoneInfo info) {
         pArr[count++] = info;
-
-        for(int i = count-1; i > 0; i--) {
-            if(pArr[i].getName().compareTo(pArr[i-1].getName()) < 0) {
+/*
+        for (int i = 1; i < count; i++) {
+            PhoneInfo temp = pArr[i];
+            int j = i - 1;
+            while (j >= 0 && temp.getName().compareTo(pArr[j].getName()) < 0) {
+                pArr[j + 1] = pArr[j];
+                j--;
+            }
+            pArr[j + 1] = temp;
+        }
+ */
+        for (int i = count - 1; i > 0; i--) {
+            if (pArr[i].getName().compareTo(pArr[i - 1].getName()) < 0) {
                 PhoneInfo temp = pArr[i];
-                pArr[i] = pArr[i-1];
-                pArr[i-1] = temp;
+                pArr[i] = pArr[i - 1];
+                pArr[i - 1] = temp;
             }
         }
     }
@@ -212,7 +222,7 @@ class PhoneBookUI {
         int menu = sc.nextInt();
         sc.nextLine();
 
-        if(menu == DEFAULT) {
+        if (menu == DEFAULT) {
             System.out.print("이름 : ");
             String name = sc.nextLine();
             System.out.print("전화번호 : ");
@@ -229,7 +239,7 @@ class PhoneBookUI {
             }
         }
 
-        if(menu == UNIV) {
+        if (menu == UNIV) {
             System.out.print("이름 : ");
             String name = sc.nextLine();
             System.out.print("전화번호 : ");
@@ -249,7 +259,7 @@ class PhoneBookUI {
             }
         }
 
-        if(menu == COMPANY) {
+        if (menu == COMPANY) {
             System.out.print("이름 : ");
             String name = sc.nextLine();
             System.out.print("전화번호 : ");
