@@ -53,13 +53,15 @@ class PhoneInfo {
         System.out.println("전화번호 : " + phone);
     }
 
+    // 이름 가져오기
     public String getName() {
         return name;
-    } // 이름 가져오기
+    }
 
+    // 전화번호 가져오기
     public String getPhone() {
         return phone;
-    } // 전화번호 가져오기
+    }
 }
 
 class PhoneUnivInfo extends PhoneInfo{
