@@ -35,7 +35,7 @@ class FriendMain {
                     String hAddress = sc.nextLine();
                     System.out.print("직장 입력 : ");
                     String hCompany = sc.nextLine();
-                    if(count < 100) {
+                    if (count < 100) {
                         arr[count++] = new HighFriend(hName, hPhone, hAddress, hCompany);
                     }
                     System.out.println("저장 완료");
@@ -49,32 +49,29 @@ class FriendMain {
                     String uAddress = sc.nextLine();
                     System.out.print("전공 입력 : ");
                     String uMajor = sc.nextLine();
-                    if(count < 100) {
+                    if (count < 100) {
                         arr[count++] = new UnivFriend(uName, uPhone, uAddress, uMajor);
                     }
                     System.out.println("저장 완료");
                     break;
                 case SHOW_DATA:
-                    if(count > 0) {
-                       for (int i = 0; i < count; i++) {
-                           arr[i].showData();
-                           System.out.println();
-                       }
+                    if (count > 0) {
+                        for (int i = 0; i < count; i++) {
+                            arr[i].showData();
+                            System.out.println();
+                        }
                     } else {
                         System.out.println("데이터가 존재하지 않습니다.");
                     }
                     break;
                 case SHOW_BASIC_DATA:
-                    if(count > 0) {
+                    if (count > 0) {
                         for (int i = 0; i < count; i++) {
-                            if(arr[i] instanceof HighFriend) {
+                            if (arr[i] instanceof HighFriend) {
                                 ((HighFriend) arr[i]).showBasicInfo();
                                 System.out.println();
                             }
-                        }
-
-                        for (int i = 0; i < count; i++) {
-                            if(arr[i] instanceof UnivFriend) {
+                            if (arr[i] instanceof UnivFriend) {
                                 ((UnivFriend) arr[i]).showBasicInfo();
                                 System.out.println();
                             }
