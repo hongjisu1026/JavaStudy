@@ -69,12 +69,10 @@ class FriendMain {
                         for (int i = 0; i < count; i++) {
                             if (arr[i] instanceof HighFriend) {
                                 ((HighFriend) arr[i]).showBasicInfo();
-                                System.out.println();
-                            }
-                            if (arr[i] instanceof UnivFriend) {
+                            }else if (arr[i] instanceof UnivFriend) {
                                 ((UnivFriend) arr[i]).showBasicInfo();
-                                System.out.println();
                             }
+                            System.out.println();
                         }
                     } else {
                         System.out.println("데이터가 존재하지 않습니다.");
