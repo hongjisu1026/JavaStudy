@@ -184,7 +184,7 @@ Throwable, printStackTrace()
  */
 
 class Test14 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         try {
             System.out.println(inputAge());
             System.out.println(inputName());
@@ -195,6 +195,7 @@ class Test14 {
             e.showWrongName();
         }
     }
+
 
     public static int inputAge() throws AgeInputException {
         Scanner sc = new Scanner(System.in);
