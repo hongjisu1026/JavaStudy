@@ -141,9 +141,8 @@ public class PhoneBookUI implements ConstantMenu {
         String name = sc.nextLine();
         int index = pb.searchName(name);
 
-
         if (index != -1) {
-            System.out.print("정말로 삭제하시겠습니까? (Y / N)");
+            System.out.print("정말로 삭제하시겠습니까? (Y / N) >> ");
             String deleteMenu = sc.nextLine().toLowerCase();
             try {
                 switch (deleteMenu) {
