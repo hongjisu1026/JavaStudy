@@ -22,7 +22,7 @@ public class PhoneBook {
 
     public int searchName(String name) {
         int start = 0;
-        int end = count - 1;
+        int end = vector.size() - 1;
         int mid;
         while (start <= end) {
             mid = (start + end) / 2;
