@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: solid 3px yellowgreen;
+            padding: 10px;
+        }
+        img {
+            float: left;
+            margin-right: 10px;
+        }
+        #text {clear: both;}
+        #second {
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>overflow 속성을 이용한 크기 조정</h1>
+    <div id="first">
+        이미지와 함께하고 싶은 내용
+        <img src="src/img_flower.png">
+    </div>
+    <p id="text"><br>overflow 속성값을 auto로 주면 자동으로 컨테이너 요소의 크기도 함께 늘어납니다!</p>
+    <div id="second">
+        이미지와 함께하고 싶은 내용
+        <img src="src/img_flower.png">
+    </div>
+</body>
+</html>
