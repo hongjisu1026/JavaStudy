@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+        .leftbtn, .rightbtn {
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 20px;
+            padding: 10px;
+        }
+        .leftbtn {
+            left: 0;
+        }
+        .rightbtn {
+            right: 0;
+        }
+        .menu {
+            display: none;
+
+        }
+        .leftbtn:hover > .menu {
+            display: block;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aligned Dropdown Content</h1>
+    <p>Determine whether the dropdown content should go from left to right or right to left with the left and right properties.</p>
+    <div class="dropdown">
+        <button class="leftbtn">Left</button>
+        <div class="menu">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="rightbtn">Right</button>
+        <div class="menu">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+</body>
+</html>

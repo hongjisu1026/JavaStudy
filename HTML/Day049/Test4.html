@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0 50px;
+        display: block;
+        overflow: scroll;
+      }
+      .article,
+      footer {
+        border: solid 1px black;
+      }
+      .topmenu {
+        float: right;
+        margin: 10px;
+      }
+      .topmenu a {
+        text-decoration: none;
+        border: solid 1px black;
+        float: left;
+        padding: 5px;
+      }
+      .topmenu a:first-child {
+        border-radius: 15px 0 0 15px;
+      }
+      .topmenu a:last-child {
+        border-radius: 0 15px 15px 0;
+      }
+      h1,
+      h2 {
+        margin: 10px;
+      }
+      nav {
+        float: right;
+      }
+      nav a {
+        border: solid 1px black;
+        float: left;
+        padding: 10px;
+        text-decoration: none;
+      }
+      nav a:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+      nav a:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+      .wrapper {
+        margin-right: 0;
+        margin-top: 60px;
+      }
+      .article {
+        margin-top: 10px;
+        width: 700px;
+        margin-right: 0;
+      }
+      .sidemenu {
+        float: right;
+      }
+      .dropdown {
+        display: inline-block;
+      }
+      .dropmenu {
+        display: none;
+      }
+      .sidemenu img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .dropmenu ul {
+        list-style: none;
+      }
+      .dropmenu ul li {
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topmenu">
+      <a href="#">Web</a>
+      <a href="#">Mobile</a>
+      <a href="#">Game</a>
+      <a href="#">Simulation</a>
+      <a href="#">Data</a>
+    </div>
+    <br />
+    <h1>Rint Development</h1>
+    <h2>HTML5 + CSS3 Basic</h2>
+    <nav>
+      <a href="#">HTML5</a>
+      <a href="#">CSS3</a>
+      <a href="#">JavaScript</a>
+      <a href="#">jQuery</a>
+      <a href="#">Node.js</a>
+    </nav>
+    <div class="wrapper">
+      <div class="article">
+        <h3>Main Article</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in
+          magna libero. Sed nec pharetra nunc. Proin eget magna id ipsum
+          eleifend cursus sit amet nec lectus. Nunc quis lacus magna. Aliquam
+          blandit, sapien ut viverra fermentum, elit tortor ornare nisi, in
+          luctus sem massa pulvinar turpis. Cras tincidunt dictum urna ut
+          ultricies. Nullam diam nibh, pellentesque non laoreet ut, bibendum nec
+          mauris. Maecenas pulvinar porttitor laoreet. Vivamus bibendum purus
+          nisl, eget aliquam lectus. Maecenas justo libero, euismod sit amet
+          suscipit eu, vulputate eget neque. Aliquam quam est, blandit nec
+          iaculis non, suscipit vel nunc. Proin et odio aliquam erat pharetra
+          accumsan et quis neque. Vivamus interdum accumsan leo eu adipiscing.
+          Integer accumsan elit non turpis faucibus porttitor. Aliquam
+          scelerisque nisi et turpis pretium at ultricies turpis pharetra.
+        </p>
+      </div>
+      <div class="article">
+        <h3>Main Article</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in
+          magna libero. Sed nec pharetra nunc. Proin eget magna id ipsum
+          eleifend cursus sit amet nec lectus. Nunc quis lacus magna. Aliquam
+          blandit, sapien ut viverra fermentum, elit tortor ornare nisi, in
+          luctus sem massa pulvinar turpis. Cras tincidunt dictum urna ut
+          ultricies. Nullam diam nibh, pellentesque non laoreet ut, bibendum nec
+          mauris. Maecenas pulvinar porttitor laoreet. Vivamus bibendum purus
+          nisl, eget aliquam lectus. Maecenas justo libero, euismod sit amet
+          suscipit eu, vulputate eget neque. Aliquam quam est, blandit nec
+          iaculis non, suscipit vel nunc. Proin et odio aliquam erat pharetra
+          accumsan et quis neque. Vivamus interdum accumsan leo eu adipiscing.
+          Integer accumsan elit non turpis faucibus porttitor. Aliquam
+          scelerisque nisi et turpis pretium at ultricies turpis pharetra.
+        </p>
+      </div>
+      <div class="article">
+        <h3>Main Article</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in
+          magna libero. Sed nec pharetra nunc. Proin eget magna id ipsum
+          eleifend cursus sit amet nec lectus. Nunc quis lacus magna. Aliquam
+          blandit, sapien ut viverra fermentum, elit tortor ornare nisi, in
+          luctus sem massa pulvinar turpis. Cras tincidunt dictum urna ut
+          ultricies. Nullam diam nibh, pellentesque non laoreet ut, bibendum nec
+          mauris. Maecenas pulvinar porttitor laoreet. Vivamus bibendum purus
+          nisl, eget aliquam lectus. Maecenas justo libero, euismod sit amet
+          suscipit eu, vulputate eget neque. Aliquam quam est, blandit nec
+          iaculis non, suscipit vel nunc. Proin et odio aliquam erat pharetra
+          accumsan et quis neque. Vivamus interdum accumsan leo eu adipiscing.
+          Integer accumsan elit non turpis faucibus porttitor. Aliquam
+          scelerisque nisi et turpis pretium at ultricies turpis pharetra.
+        </p>
+      </div>
+    </div>
+    <aside class="sidemenu">
+      <div class="dropdown">
+        <p>First</p>
+        <div class="dropmenu">
+          <ul>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>HTML5 Canvas</strong><br />
+                2012-03-15</a>
+            </li>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>HTML5 Audio</strong><br />
+                2012-03-15</a>
+            </li>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>HTML5 Video</strong><br />
+                2012-03-15</a>
+            </li>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>HTML5 Semantic Web</strong><br />
+                2012-03-15</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown">
+        <p>Second</p>
+        <div class="dropmenu">
+          <ul>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>CSS3 Transition</strong><br />
+                2012-03-15</a>
+            </li>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>CSS3 Animation</strong><br />
+                2012-03-15</a>
+            </li>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>CSS3 Border</strong><br />
+                2012-03-15</a>
+            </li>
+            <li>
+              <img src="/src/img_flower.png" />
+              <a href="#"
+                ><strong>CSS3 Box</strong><br />
+                2012-03-15</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <footer>
+      <h3>HTML5 + CSS3 Basic</h3>
+      <p>Website Layout Basic</p>
+    </footer>
+  </body>
+</html>

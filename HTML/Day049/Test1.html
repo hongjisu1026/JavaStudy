@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dropbtn {
+        border: none;
+        font-size: large;
+        color: white;
+        background-color: green;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      .dropdown {
+        display: inline-block;
+        position: relative;
+      }
+      .menu_l, .menu_r {
+        display: none;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      .menu_r {
+        right: 0;
+      }
+      .menu_l a, .menu_r a {
+        text-decoration: none;
+        color: black;
+        background-color: #f9f9f9;
+        display: block;
+        min-width: 150px;
+        padding: 10px 20px;
+        text-align: left;
+      }
+      .dropdown:hover .menu_r, .dropdown:hover .menu_l {
+        display: block;
+        position: absolute;
+      }
+      .menu_l a:hover, .menu_r a:hover {
+        background-color: #eee;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Aligned Dropdown Content</h1>
+    <p>
+      Determine whether the dropdown content should go from left to right or
+      right to left with the left and right properties.
+    </p>
+    <div class="dropdown" style="float: left;">
+      <button class="dropbtn">Left</button>
+      <div class="menu_l">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+    <div class="dropdown" style="float: right;">
+      <button class="dropbtn">right</button>
+      <div class="menu_r">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+  </body>
+</html>
