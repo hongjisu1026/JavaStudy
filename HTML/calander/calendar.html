@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calendar</title>
+        <link rel="stylesheet" type="text/css" href="layout.css" />
+    </head>
+    <body>
+        <h1>Calendar</h1>
+        <div class="monthly-calendar">
+            <div class="table-header table">
+                <button id="arrow_btn" onclick="clickPrevBtn()">&lt;</button>
+                <p id="header_year_month"></p>
+                <button id="arrow_btn" onclick="clickNextBtn()">&gt;</button>
+            </div>
+            <div class="calendar-btn">
+                <button onclick="clickTodayBtn()">Today</button>
+                <div class="dropdown">
+                    <button id="select_btn">Select</button>
+                    <div class="menu">
+                        <input type="text" id="calendar_year" placeholder="Year" required />
+                        <input type="text" id="calendar_month" placeholder="Month" required />
+                        <button onclick="clickMoveBtn()">Move</button>
+                    </div>
+                </div>
+            </div>
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th>토</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body"></tbody>
+            </table>
+        </div>
+
+        <script>
+            (function (msg) {
+                console.log(msg);
+
+                controlCalendar('TODAY');
+                controlAnnualCalendar('TODAY');
+            })('start');
+
+            /* 이전달 이동 버튼 */
+            function clickPrevBtn() {
+                controlCalendar('PREV');
+            }
+
+            /* 다음달 이동 버튼 */
+            function clickNextBtn() {
+                controlCalendar('NEXT');
+            }
+
+            /* 오늘 날짜로 이동 버튼 */
+            function clickTodayBtn() {
+                controlCalendar('TODAY');
+            }
+
+            /* 입력한 년, 월로 이동 버튼 */
+            function clickMoveBtn() {
+                controlCalendar('MOVE');
+            }
+
+            /* 캘린더 컨트롤러 */
+            function controlCalendar(state) {
+                const tDate = new Date();
+                const currentYear = tDate.getFullYear();
+                const currentMonth = tDate.getMonth();
+
+                const iYear = document.getElementById('calendar_year');
+                const iMonth = document.getElementById('calendar_month');
+
+                let year = iYear.value === '' ? currentYear : parseInt(iYear.value);
+                let month = iMonth.value === '' ? currentMonth : parseInt(iMonth.value) - 1;
+
+                switch (state) {
+                    case 'TODAY':
+                        year = currentYear;
+                        month = currentMonth;
+                        break;
+                    case 'PREV':
+                        year = iYear.value === '' ? currentYear : parseInt(iYear.value);
+                        month = iMonth.value === '' ? currentMonth : parseInt(iMonth.value) - 2;
+                        break;
+                    case 'NEXT':
+                        year = iYear.value === '' ? currentYear : parseInt(iYear.value);
+                        month = iMonth.value === '' ? currentMonth : parseInt(iMonth.value);
+                        break;
+					case 'MOVE':
+						break;	
+                }
+
+                const currentDate = year === currentYear && month === currentMonth ? tDate.getDate() : undefined;
+
+                let sDate = new Date(year, month, 1);
+                let lDate = new Date(year, month + 1, 0);
+
+                iYear.value = sDate.getFullYear();
+                iMonth.value = sDate.getMonth() + 1;
+
+               printCalendar(sDate, lDate, currentDate);
+            }
+
+            /* 캘린더에 들어갈 데이터(태그) 생성 */
+            function printCalendar(sDate, lDate, currentDate) {
+                const firstDay = sDate.getDay();
+                const lastDay = lDate.getDate();
+                const week = Math.ceil((firstDay + lastDay) / 7);
+
+                let resultHTML = '';
+
+                let day = 1;
+                let count = 0;
+
+                for (let i = 0; i < week; i++) {
+                    resultHTML += '<tr>';
+                    for (let j = 0; j < 7; j++) {
+                        if (count < firstDay) {
+                            resultHTML += '<td></td>';
+                        } else if (day <= lastDay) {
+                            let data = day === currentDate ? `<td style='color: pink;'>${day++}</td>` : `<td>${day++}</td>`;
+                            resultHTML += data;
+                        } else {
+                            resultHTML += '<td></td>';
+                        }
+                        count++;
+                    }
+                    resultHTML += '</tr>';
+                }
+				document.getElementById('header_year_month').innerHTML = `${document.getElementById('calendar_year').value}년 ${document.getElementById('calendar_month').value}월`;
+                document.getElementById('table_body').innerHTML = resultHTML;
+            }
+        </script>
+    </body>
+</html>

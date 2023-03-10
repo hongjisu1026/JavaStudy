@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        background-color: #333;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        display: inline-block;
+      }
+      li a, .dropbtn {
+        padding: 15px;
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        font-size: large;
+      }
+      li:hover {
+        background-color: red;
+      }
+      .menu {
+        position: absolute;
+        display: none;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      .menu a{
+        display: block;
+        background-color: #f9f9f9;
+        color: black;
+        padding: 10px 20px;
+        min-width: 130px;
+      }
+      .menu a:hover {
+        background-color: #eee;
+      }
+      .dropdown:hover .menu {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">News</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Dropdown</a>
+          <div class="menu">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <h1>Dropdown Menu inside a Navigation Bar</h1>
+    <p>Hover over the "Dropdown" link to see the dropdown menu.</p>
+  </body>
+</html>

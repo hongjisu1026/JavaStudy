@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dropimg {
+            width: 100px;
+        }
+        .menu, .menuimg {
+            width: 300px;
+            text-align: center;
+        }
+        .menu p {
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 10px;
+            margin: 0;
+        }
+        .menu {
+            display: none;
+        }
+        .dropdown:hover .menu {
+            display: block;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dropdown Image</h1>
+    <p>Move the mouse over the image below to open the dropdown content.</p>
+    <div class="dropdown">
+        <img src="/src/img_5terre.jpg" class="dropimg">
+        <div class="menu">
+            <img src="/src/img_5terre.jpg" class="menuimg">
+            <p class="content">Beautiful Cinque Terre</p>
+        </div>
+    </div>
+</body>
+</html>

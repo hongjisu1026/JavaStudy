@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+
+    <style>
+        .calendar {
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            height: 600px;
+        }
+        .calendar h1 {
+            text-align: center;
+        }
+        .calendar-header {
+            display: flex;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        .calendar-header button {
+            cursor: pointer;
+            padding: 0 20px;
+            background-color: #dcdcdc;
+            border: 0;
+            outline: none;
+        }
+        .calendar-header button:hover {
+            background-color: #ececec;
+        }
+        .calendar-header .title-input {
+            display: flex;
+            justify-content: space-between;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+        .calendar-header .title-input * {
+            margin: 0 2.5px;
+        }
+        .calendar-header .title-input input {
+            flex-grow: 1;
+        }
+        .calendar-header .title-input button {
+            padding: 0 10px;
+        }
+        .calendar-body {
+            flex-grow: 1;
+            border: 3px double #333;
+        }
+        .calendar-body td {
+            text-align: center;
+        }
+        .calendar-body .is-today {
+            background-color: #1f80ee;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calendar">
+        <h1>홍지붕의 칼린도루</h1>
+        <div class="calendar-header">
+            <button onclick="btnPrevMonth()">&lt;</button>
+            <div class="title-input">
+                <input type="text" id="calendarYear" class="title-input-year" placeholder="년도" />
+                <input type="text" id="calendarMonth" class="title-input-month" placeholder="달" />
+                <button onclick="btnTeleportMonth()">이동</button>
+                <button onclick="btnTeleportToday()">오늘</button>
+            </div>
+            <button onclick="btnNextMonth()">&gt;</button>
+        </div>
+        <table class="calendar-body" border="1">
+            <thead>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </thead>
+            <tbody id="calendarContent" />
+        </table>
+    </div>
+
+    <script>
+
+        /* 즉시 실행 함수(IFFE) */
+        ((msg) => {
+            console.log(msg);
+
+            controlCalendar('TODAY');
+        })('즉시 실행 함수(IFFE)');
+
+        /* 이전달 이동 버튼 */
+        function btnPrevMonth () {
+            controlCalendar('PREV');
+        }
+
+        /* 입력 따른 년월 이동 버튼 */
+        function btnTeleportMonth () {
+            controlCalendar();
+        }
+
+        /* 오늘 이동 버튼 */
+        function btnTeleportToday () {
+            controlCalendar('TODAY');
+        }
+
+        /* 다음달 이동 버튼 */
+        function btnNextMonth () {
+            controlCalendar('NEXT');
+        }
+
+        /* 캘린더 기능 별 스위치  */
+        function controlCalendar (state) {
+
+            // document 한번만 부르기 위한 변수 저장 (년 / 월 INPUT element)
+            const elYear = document.getElementById('calendarYear');
+            const elMonth = document.getElementById('calendarMonth');
+
+            // TODAY 데이터
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth();
+
+            // 캘린더를 생성할 년도와 월 데이터 가져오기
+            let year = elYear.value !== '' ? Number(elYear.value) : currentYear;
+            let month = elMonth.value !== '' ? Number(elMonth.value) - 1 : currentMonth;
+
+            switch (state) {
+                case 'TODAY':
+                    year = currentYear;
+                    month = currentMonth;
+
+                    break;
+                case 'PREV':
+                    year = elYear.value !== '' ? Number(elYear.value) : currentYear;
+                    month = elMonth.value !== '' ? Number(elMonth.value) - 2 : currentMonth;
+
+                    break;
+                case 'NEXT':
+                    year = elYear.value !== '' ? Number(elYear.value) : currentYear;
+                    month = elMonth.value !== '' ? Number(elMonth.value) : currentMonth;
+
+                    break;
+            }
+            // TODAY 표시하기 위한 데이터 조건
+            const currentDate = year === currentYear && month === currentMonth ? today.getDate() : undefined;
+
+            // 입력된 년 월의 1일
+            let sDate = new Date(year, month, 1);
+
+            // 입력된 년 월의 마지막일
+            let eDate = new Date(year, month + 1, 0);
+
+            // 변경에 따른 INPUT 값 갱신
+            elYear.value = sDate.getFullYear();
+            elMonth.value = sDate.getMonth() + 1;
+
+            drawCalendar(initCalendar(sDate, eDate), currentDate);
+        }
+
+        /* 캘린더 데이터 만들기 */
+        function initCalendar (sDate, eDate) {
+
+            // 요일 최대 카운트 (0 ~ 6, 일 ~ 토)
+            const NUM_FULL_DAY_COUNT = 7;
+
+            // 달력의 형태
+            const calendarData = [
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0]
+            ];
+
+            // 해당하는 달의 1일 시작 요일
+            let firstDay = sDate.getDay();
+
+            // 시작 요일이 일요일이면 첫번째 행 빈칸으로 표기하기 위한 값
+            let startRow = firstDay === 0 ? 1 : 0;
+
+            // 해당하는 달의 마지막 일자
+            let lastDay = eDate.getDate();
+
+            // 1일부터 마지막일 까지 calendarData 매트릭스에 숫자 표기, 빈칸은 0으로 표시 하는 for문
+            for (let day = 1; day < lastDay + 1; day++) {
+                calendarData[startRow][firstDay++] = day;
+
+                // 0부터 6까지만 해당되기에 바로 위에 firstDay++ 에서 증가되었을때 7이 되면 다음 행으로
+                if (firstDay === NUM_FULL_DAY_COUNT) {
+                    firstDay = 0;
+                    startRow++;
+                }
+            }
+            return calendarData;
+        }
+
+        /* 화면에 캘린더 그리기 */
+        function drawCalendar (calendarData, currentDate) {
+
+            // 캘린더 ID
+            const ID_CONTENT = 'calendarContent';
+
+            // CLASS명
+            const CLASS_IS_TODAY = 'is-today';
+
+            let innerHTML1 = '';
+
+            // HTML Tag 붙이는 작업
+            for (let i = 0; i < calendarData.length; i++) {
+                let innerHTML2 = '';
+
+                for (let j = 0; j < calendarData[i].length; j++) {
+                    // currentDate가 넘어오는 건 현재년도와 달과 일치하다는 뜻 today 체크해야함
+                    const className = currentDate !== undefined && calendarData[i][j] === currentDate ? CLASS_IS_TODAY : '';
+
+                    innerHTML2 = `${innerHTML2}<td class="${className}">${calendarData[i][j] || '　'}</td>`;
+                }
+                innerHTML1 = `${innerHTML1}<tr>${innerHTML2}</tr>`;
+            }
+
+            // 화면 갱신
+            document.getElementById(ID_CONTENT).innerHTML = innerHTML1;
+        }
+    </script>
+</body>
+</html>

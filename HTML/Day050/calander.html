@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="dd"></p>
+    <script>
+      function calander(year, month) {
+        document.write('<table border="1">');    
+        let date = new Date(year, month - 1, 1);
+        let firstDay = date.getDay();
+        date = new Date(year, month, 0);
+        let lastDay = date.getDate();
+        let count = 0;
+        let flag = 1;
+        let temp;
+        document.write(`${year}년 ${month}월`);
+        document.write("<thead>");
+        document.write("<th>일</th>");
+        document.write("<th>월</th>");
+        document.write("<th>화</th>");
+        document.write("<th>수</th>");
+        document.write("<th>목</th>");
+        document.write("<th>금</th>");
+        document.write("<th>토</th>");
+        document.write("</thead>");
+
+        for (let i = 0; i < (lastDay + firstDay) / 7; i++) {
+          document.write("<tr>");
+          if (firstDay != 0 && i == 0) {
+            for (let k = 0; k < firstDay; k++) {
+              document.write("<td></td>");
+              count ++;
+            }
+          }
+          for (let j = flag; j <= lastDay; j++) {
+            if (count == 7) break;
+            document.write("<td>" + j + "</td>");
+            count ++;
+            flag = j + 1;
+          }
+          if (count < 7) {
+            for (let j = count; j < 7; j++) {
+                document.write("<td></td>")
+            }
+          }
+          count = 0;
+          document.write("</tr>");
+        }
+        document.write('</table>');
+      }
+      calander(2024, 2);
+
+      let aa = new Date();
+      let today = aa.getday();
+      console.log(today);
+    </script>
+  </body>
+</html>

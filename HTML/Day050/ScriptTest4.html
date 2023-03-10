@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let pic;
+        function on(num) {
+            if (num == 1) {
+                pic = "/src/pic_bulbon.gif";
+            } else {
+                pic = "/src/pic_bulboff.gif";
+            }
+            document.getElementById("light").src = pic;
+        }
+        
+    </script>
+    <img id="light" src="../src/pic_bulboff.gif" width="100"> <br>
+    <button type="button" onclick="on(1)">Light On</button>
+    <button type="button" onclick="on(0)">Light Off</button>
+</body>
+</html>
