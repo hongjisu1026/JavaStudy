@@ -5,20 +5,155 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Calendar</title>
-        <link rel="stylesheet" type="text/css" href="layout.css" />
+        <style>
+            #annual_content {
+                display: none;
+            }
+            .menu {
+                display: none;
+            }
+
+            body {
+                padding: 50px;
+                padding-top: 30px;
+            }
+
+            .header {
+                margin: 0;
+                padding: 0;
+                margin-bottom: 30px;
+                border-bottom: solid 2px pink;
+                padding: 20px;
+            }
+            .header h1, .header-btn {
+                display: inline-block;
+            }
+            h1 {
+                width: min-content;
+                margin: 0;
+                margin-right: 0;
+            }
+            .header-btn {
+                width: min-contents;
+                float: right;
+                padding: 10px;
+                position: absolute;
+                right: 50px;
+                top: 50px;
+                vertical-align: middle;
+            }
+            .header button {
+                vertical-align: middle;
+                border: none;
+                background-color: pink;
+                font-size: large;
+                padding: 10px 20px;
+            }
+
+            .table-btn {
+                width: 350px;
+                margin: 0
+            }
+            .table-btn button, .table-btn p {
+                display: inline-block;
+                margin: 20px;
+                margin-top: 0;
+            }
+            .table-btn button {
+                border: none;
+                background-color: white;
+                color: pink;
+                font-size: 2em;
+            }
+            .table-btn p {
+                font-size: 1.5em;
+                font-weight: 600;
+            }
+
+            .calendar-btn, .a-calendar-btn {
+                position: absolute;
+                right: 65px;
+                top: 165px;
+            }
+            .calendar-btn button, .dropdown, .a-calendar-btn button .dropdown {
+                display: inline-block;
+                border: none;
+                background-color: pink;
+            }
+            .calendar-btn button, .a-calendar-btn button {
+                padding: 10px;
+            }
+            .menu {
+                margin-top: 5px;
+                background-color: white;
+                border: solid 1px pink;
+                position: absolute;
+                right: 0;
+                padding: 10px;
+                width: 415px;
+            }
+            .menu input, .menu button {
+                display: inline-block;
+            }
+            .menu input {
+                margin-right: 5px;
+                vertical-align: middle;
+            }
+             
+            tr td {
+                vertical-align: top;
+            }
+            table {
+                padding: 10px 20px;
+            }
+            td, th {
+                border: solid 1px pink;
+            }
+            th {
+                padding: 30px;
+            }
+            td {
+                width: 170px;
+                height: 170px;
+                padding: 10px;
+            }
+            td:first-child, th:first-child {
+                color: red;
+            }
+            td:last-child, th:last-child {
+                color: dodgerblue;
+            }
+            #today {
+                background-color: pink;
+            }
+            td:hover {
+                color: pink;
+            }
+            #today:hover {
+                color: white;
+            }
+        </style>
     </head>
     <body>
-        <h1>Calendar</h1>
-        <div class="monthly-calendar">
-            <div class="table-header table">
-                <button id="arrow_btn" onclick="clickPrevBtn()">&lt;</button>
-                <p id="header_year_month"></p>
-                <button id="arrow_btn" onclick="clickNextBtn()">&gt;</button>
+        <div class="header">
+            <h1>Calendar</h1>
+            <div class="header-btn">
+                <button onclick="clickYearBtn()">Year</button>
+                <button onclick="clickMonthBtn()">Month</button>
             </div>
+        </div>
+
+        <div id="monthly_content">
+            <div class="table-btn table">
+                <button onclick="clickPrevBtn()">&lt;</button>
+                <p id="header_year_month"></p>
+                <button onclick="clickNextBtn()">&gt;</button>
+            </div>
+
             <div class="calendar-btn">
                 <button onclick="clickTodayBtn()">Today</button>
                 <div class="dropdown">
-                    <button id="select_btn">Select</button>
+                    <button id="select_btn" onclick="clickSelectBtn()">Select</button>
                     <div class="menu">
                         <input type="text" id="calendar_year" placeholder="Year" required />
                         <input type="text" id="calendar_month" placeholder="Month" required />
@@ -26,29 +161,42 @@
                     </div>
                 </div>
             </div>
-        
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>일</th>
-                        <th>월</th>
-                        <th>화</th>
-                        <th>수</th>
-                        <th>목</th>
-                        <th>금</th>
-                        <th>토</th>
-                    </tr>
-                </thead>
-                <tbody id="table_body"></tbody>
-            </table>
+
+            <div class="monthly-calendar"></div>
+
+        </div>
+
+        <div id="annual_content">
+
+            <div class="table-btn table">
+                <button onclick="clickAnnualPrevBtn()">&lt;</button>
+                <p id="a_header_year"></p>
+                <button  onclick="clickAnnualNextBtn()">&gt;</button>
+            </div>
+
+            <div class="a-calendar-btn">
+                <button onclick="clickAnnualTodayBtn()">Today</button>
+                <div class="dropdown">
+                    <button id="a_select_btn" onclick="clickAnnualSelectBtn()">Select</button>
+                    <div class="menu">
+                        <input type="text" id="a_calendar_year" placeholder="Year" required />
+                        <button onclick="clickAnnualMoveBtn()">Move</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="annual-calendar"></div>
+
         </div>
 
         <script>
+            let btn;
+            let a_btn;
+
             (function (msg) {
                 console.log(msg);
 
                 controlCalendar('TODAY');
-                controlAnnualCalendar('TODAY');
             })('start');
 
             /* 이전달 이동 버튼 */
@@ -108,11 +256,11 @@
                 iYear.value = sDate.getFullYear();
                 iMonth.value = sDate.getMonth() + 1;
 
-               printCalendar(sDate, lDate, currentDate);
+               printCalendar(initCalendar(sDate, lDate, currentDate), iYear.value, iMonth.value);
             }
 
             /* 캘린더에 들어갈 데이터(태그) 생성 */
-            function printCalendar(sDate, lDate, currentDate) {
+            function initCalendar(sDate, lDate, currentDate) {
                 const firstDay = sDate.getDay();
                 const lastDay = lDate.getDate();
                 const week = Math.ceil((firstDay + lastDay) / 7);
@@ -122,13 +270,16 @@
                 let day = 1;
                 let count = 0;
 
+                resultHTML += '<table>';
+                resultHTML += createCalendarForm();
+                resultHTML += '<tbody>';
                 for (let i = 0; i < week; i++) {
                     resultHTML += '<tr>';
                     for (let j = 0; j < 7; j++) {
                         if (count < firstDay) {
                             resultHTML += '<td></td>';
                         } else if (day <= lastDay) {
-                            let data = day === currentDate ? `<td style='color: pink;'>${day++}</td>` : `<td>${day++}</td>`;
+                            let data = day === currentDate ? `<td id="today">${day++}</td>` : `<td>${day++}</td>`;
                             resultHTML += data;
                         } else {
                             resultHTML += '<td></td>';
@@ -137,8 +288,141 @@
                     }
                     resultHTML += '</tr>';
                 }
-				document.getElementById('header_year_month').innerHTML = `${document.getElementById('calendar_year').value}년 ${document.getElementById('calendar_month').value}월`;
-                document.getElementById('table_body').innerHTML = resultHTML;
+                resultHTML += '</tbody></table>';
+				return resultHTML;
+            }
+
+            /* 캘린더 출력 */
+            function printCalendar(resultHTML, year, month) {
+                document.getElementById('header_year_month').innerHTML = `${year}년 ${month}월`;
+                document.getElementsByClassName('monthly-calendar')[0].innerHTML = resultHTML;
+            }
+
+            /* 이전년도 이동 버튼 */
+            function clickAnnualPrevBtn() {
+                controlAnnualCalendar('PREV');
+            }
+
+            /* 다음년도 이동 버튼 */
+            function clickAnnualNextBtn() {
+                controlAnnualCalendar('NEXT');
+            }
+
+            /* 오늘 날짜로 이동 버튼 */
+            function clickAnnualTodayBtn() {
+                controlAnnualCalendar('TODAY');
+            }
+
+            /* 입력한 년도로 이동 버튼 */
+            function clickAnnualMoveBtn() {
+                controlAnnualCalendar('MOVE');
+            }
+
+            /* 연간 캘린더 컨트롤러 */
+            function controlAnnualCalendar(state) {
+                const tDate = new Date();
+                const currentYear = tDate.getFullYear();
+
+                const iYear = document.getElementById('a_calendar_year');
+
+                let year = iYear.value === '' ? currentYear : parseInt(iYear.value);
+
+                switch (state) {
+                    case 'TODAY':
+                        year = currentYear;
+                        break;
+                    case 'PREV':
+                        year = iYear.value === '' ? currentYear : parseInt(iYear.value) - 1;
+                        break;
+                    case 'NEXT':
+                        year = iYear.value === '' ? currentYear : parseInt(iYear.value) + 1;
+                        break;
+					case 'MOVE':
+						break;	
+                }
+
+                let sDate = new Date(year, 0, 1);
+                let lDate = new Date(year, 1, 0);
+
+                iYear.value = sDate.getFullYear();
+                printAnnualCalendar(iYear.value);
+            }
+
+            /* 연간 캘린더 출력 */
+            function printAnnualCalendar(year) {
+                let resultHTML = "";
+
+                const tDate = new Date();
+                const currentYear = tDate.getFullYear();
+                const currentMonth = tDate.getMonth();
+
+                for (let month = 0; month < 12; month++) {
+                    let asDate = new Date(year, month, 1);
+                    let alDate = new Date(year, month + 1, 0);
+                    resultHTML += `<div id="${month + 1}m" onclick="clickMoveToMonth(${year}, ${month + 1})">`;
+                    resultHTML +=  `<p class="month">${month + 1}월</p>`;
+                    const currentDate = asDate.getFullYear() === currentYear && asDate.getMonth() === currentMonth ? tDate.getDate() : undefined;
+                    resultHTML += initCalendar(asDate, alDate, currentDate);
+                    resultHTML += '</div>';
+                }
+
+                document.getElementById('a_header_year').innerHTML = `${year}년`;
+                document.getElementsByClassName('annual-calendar')[0].innerHTML = resultHTML;
+            }
+
+            /* 캘린더 형태 만들기 */
+            function createCalendarForm() {
+                let calendarForm = '<thead class="table-header"><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead>';
+
+                return calendarForm;                
+            }
+
+            /* '년'버튼 클릭 */
+            function clickYearBtn() {
+                document.getElementById('monthly_content').style.display = "none";
+                document.getElementById('annual_content').style.display = "block";
+                controlAnnualCalendar('MOVE');
+            }
+
+            /* '달'버튼 클릭 */
+            function clickMonthBtn() {
+
+                document.getElementById('monthly_content').style.display = "block";
+                document.getElementById('annual_content').style.display = "none";
+                controlCalendar('TODAY');
+            }
+
+            /* 연간 달력에서 달 클릭하면 해당 달로 이동 */
+            function clickMoveToMonth(year, month) {
+                const iYear = document.getElementById('calendar_year');
+                const iMonth = document.getElementById('calendar_month');
+
+                iYear.value = year;
+                iMonth.value = month;
+
+                document.getElementById('monthly_content').style.display = "block";
+                document.getElementById('annual_content').style.display = "none";
+                controlCalendar('MOVE');
+            }
+
+            function clickSelectBtn() {
+                if (btn === 0 || btn === undefined) {
+                    document.getElementsByClassName('menu')[0].style.display = "block";
+                    btn = 1;
+                } else {
+                    document.getElementsByClassName('menu')[0].style.display = "none";
+                    btn = 0;
+                }
+            }
+
+            function clickAnnualSelectBtn() {
+                if (a_btn === 0 || a_btn === undefined) {
+                    document.getElementsByClassName('menu')[1].style.display = "block";
+                    a_btn = 1;
+                } else {
+                    document.getElementsByClassName('menu')[1].style.display = "none";
+                    a_btn = 0;
+                }
             }
         </script>
     </body>

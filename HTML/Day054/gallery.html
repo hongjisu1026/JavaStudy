@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+    <style>
+        .img {
+            width: 1000px;
+            height: 800px;
+            text-align: center;
+        }
+        .btn {
+            width: 1000px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="img">
+        <img id="image_div" src="">
+    </div>
+    <div class="btn">
+        <button onclick="clickPrevBtn()">이전</button>
+        <button onclick="clickNextBtn()">다음</button>
+    </div>
+
+    <script>
+        (function (msg) {
+            console.log(msg);
+
+            first();
+        })('start');
+
+        function initPhotoToArray() {
+            let phothos = [];
+            for (let i = 0; i < 9; i++) {
+                const src = '/src/pic_' + (i + 1) + '.jpg';
+                console.log(src + " ");
+                phothos.push(src);
+            }
+
+            return phothos;
+        }
+
+        function first() {
+            const phothos = initPhotoToArray();
+
+            document.getElementById('image_div').src = phothos[0];
+        }
+
+        function clickPrevBtn() {
+            const phothos = initPhotoToArray();
+            const currentPath = document.getElementById('image_div').src.substring(21);
+
+            let index = phothos.indexOf(currentPath);
+            index = index === 0 ? phothos.length - 1 : index - 1;
+
+            document.getElementById('image_div').src = phothos[index];
+        }
+
+        function clickNextBtn() {
+            const phothos = initPhotoToArray();
+            const currentPath = document.getElementById('image_div').src.substring(21);
+
+            let index = phothos.indexOf(currentPath);
+            index = index === phothos.length - 1 ? 0 : index + 1;
+
+            document.getElementById('image_div').src = phothos[index];
+        }
+    </script> 
+</body>
+</html>
