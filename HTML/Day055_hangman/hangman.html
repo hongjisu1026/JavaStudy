@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .wrapper {
+            width: auto;
+            height: auto;
+            padding: 50px;
+            margin: 0;
+        }
+        #word_data {
+            display: none;
+        }
+        .result-screen {
+            display: none;
+        }
+        .hangman-img, .hangman-img img {
+            width: 700px;
+            height: 700px;
+            float: right;
+            margin: 50px 0 10px 0;
+            padding-right: 0;
+        }
+        .screen-wrapper, .hangman-img {
+            display: inline-block;
+        }
+
+
+        .screen-wrapper {
+            margin: 90px;
+            padding: 10px;
+        }
+
+        .input-div {
+            vertical-align: middle;
+            padding: 10px 0;
+        }
+        #input_txt {
+            width: 600px;
+            height: 50px;
+            font-size: 40px;
+        }
+        .input-div button {
+            position: absolute;
+            margin-left: 10px;
+            height: 55px;
+            font-size: 30px;
+            padding: 5px;
+            background-color: black;
+            color: white;
+            border: none;
+        }
+        .input-div button:hover {
+            background-color: dimgrey;
+        }
+        
+        .alphabet div {
+            display: inline-block;
+            margin: 10px;
+            font-size: 100px;
+        }
+        
+        #alphabet_div {
+            border: solid 1px black;
+            padding: 50px;
+            font-size: 50px;
+            width: 700px;
+            margin-top: 30px;
+        }
+
+        .result-screen {
+            padding: 100px;
+        }
+        .win-lose, .result-screen button {
+            display: inline-block;
+        }
+        .win-lose {
+            font-size: 50px;
+        }
+        .result-screen button, .result-screen img {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border: none;
+        }
+        .result-screen button {
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="screen-wrapper">
+            <div class="game-screen">
+        
+                <div class="input-div">
+                    <input type="text" id="input_txt">
+                    <button onclick="getInputValue()">입력</button>
+                </div>
+        
+                <div class="answer-div">
+                    <div class="alphabet"></div>
+                </div>
+        
+                <div id="alphabet_div">a &nbsp;&nbsp; b &nbsp;&nbsp; c &nbsp;&nbsp; d &nbsp;&nbsp; e &nbsp;&nbsp; f &nbsp;&nbsp;
+                    g &nbsp;&nbsp; h &nbsp;&nbsp; i &nbsp;&nbsp; j &nbsp;&nbsp; k &nbsp;&nbsp; l &nbsp;&nbsp; m &nbsp;&nbsp; n
+                    &nbsp;&nbsp; o &nbsp;&nbsp; p &nbsp;&nbsp; q &nbsp;&nbsp; r &nbsp;&nbsp; s &nbsp;&nbsp; t &nbsp;&nbsp; u
+                    &nbsp;&nbsp; v &nbsp;&nbsp; w &nbsp;&nbsp; x &nbsp;&nbsp; y &nbsp;&nbsp; z</div>
+        
+            </div>
+        
+            <div class="result-screen">
+                <div class="win-lose"></div>
+                <button onclick="window.location.reload()"><img src="/src/ic_retry.png"></button>
+            </div>
+        </div>
+    
+        <div class="hangman-img"><img id="rabbit" src="src/1.png"></div>
+    </div>
+    
+    <script>
+        let word;
+        let count = 0;
+        (function (msg) {
+            console.log(msg);
+
+            alert('영어 단어를 맞춰 토끼를 구해주세요!')
+            word = submitProblem();
+        })('start');
+
+        function initDataToArray() {
+            const data = 'about,across,address,afraid,after,afternoon,again,airport,album,always,angry,animal,answer,apartment,apple,around,arrive,autumn,balloon,banana,computer,country,friend,thousand,picture,through,pocket,thirsty,laugh,curtain,tomorrow,tonight,hamburger,listen,course,beautiful,grandmother,grandfather,bicycle,problem,basket,ground,exercise,shoulder,toghether,morning,rainbow,daughter,yesterday,mountain';
+            const wordArr = data.split(',');
+
+            return wordArr;
+        }
+
+        function submitProblem() {
+            const wordArr = initDataToArray();
+            const index = parseInt(Math.random() * (wordArr.length + 1));
+
+            let word = wordArr.splice(index, 1);
+            word = word[0];
+
+            let insertAlphabet = '';
+            for (let i = 0; i < word.length; i++) {
+                insertAlphabet += `<div id=${i}>_</div>`;
+            }
+
+            document.getElementsByClassName('alphabet')[0].innerHTML = insertAlphabet;
+
+            return word;
+        }
+
+        function playGame(iValue) {
+            console.log(word);
+            while (count < 5) {
+                if (iValue.length === 1) {
+                    for (let i = 0; i < word.length; i++) {
+                        const index = word.indexOf(iValue, i);
+                        console.log(index);
+                        if (index >= 0) {
+                            document.getElementById(`${index}`).innerHTML = iValue;
+                        }
+                    }
+                    removeAlphabet(iValue);
+                    count ++;
+                    console.log(count);
+                    changeImage(count);
+                    return;
+                } else {
+                    if (word === iValue) {
+                        break;
+                    } else {
+                        alert('틀렸습니다! 다시 시도 해 주세요.');
+                        count ++;
+                        console.log(count);
+                        changeImage(count);
+                        return;
+                    }
+                }
+            }
+
+            const state = count === 5 ? 'LOSE' : 'WIN';
+            resultOfGame(state, word);
+        }
+
+        function getInputValue() {
+            const iValue = document.getElementById('input_txt').value;
+
+            if (iValue === '' || iValue === null || iValue === undefined) {
+                alert('알파벳 혹은 정답을 입력해주세요');
+            } else {
+                playGame(iValue);
+            }
+
+            document.getElementById('input_txt').value = '';
+        }
+
+        function resultOfGame(state, answer) {
+            document.getElementsByClassName('game-screen')[0].style.display = "none";
+            document.getElementsByClassName('result-screen')[0].style.display = "block";
+
+            switch (state) {
+                case 'WIN':
+                    document.getElementsByClassName('win-lose')[0].innerHTML = `이겼습니다. <br> 정답은 <strong>${answer}</strong> 입니다.`;
+                    changeImage(7);
+                    return;
+                case 'LOSE':
+                    document.getElementsByClassName('win-lose')[0].innerHTML = `졌습니다. <br> 정답은 <strong>${answer}</strong> 입니다.`;
+                    changeImage(6);
+                    return;
+            }
+        }
+
+        function removeAlphabet(alphabet) {
+            let data = document.getElementById('alphabet_div').innerText;
+            data = data.replace(alphabet, `&nbsp`);
+
+            document.getElementById('alphabet_div').innerHTML = data;
+        }
+
+        function changeImage(count) {
+            document.getElementById('rabbit').src = `src/${count + 1}.png`;
+        }
+    </script>
+</body>
+</html>
