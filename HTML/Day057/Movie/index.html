@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인생 영화 소개</title>
+    <style>
+        @font-face {
+            font-family: 'NanumSquareRound';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'NanumSquareRound';
+            margin: 0;
+        }
+        .wrapper {
+            width: 1500px;
+            margin: auto;
+            background-color: white;
+        }
+        .wrapper header {
+            padding: 10px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        /* 배너 */
+        .banner-wrapper {
+            position: relative;
+            width: 1500px;
+            height: 500px;
+            margin-bottom: 20px;
+            padding: 0;
+        }
+        #banner_img {
+            width: 1500px;
+            height: 500px;
+        }
+        #banner_title {
+            position: absolute;
+            color: white;
+            top: 70%;
+            left: 15%;
+            font-size: 30px;
+        }
+
+        /* 포스터 */
+        .poster-wrapper img:hover {
+            opacity: .5;
+        }
+
+        /* 메뉴 */
+
+
+        /* 푸터 */
+
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <header>
+            <h2>영화는 영어로 무비</h1>
+        </header>
+        <div class="banner-wrapper">
+            <img id="banner_img" src="/src/interstellar-banner.png">
+            <p id="banner_title">인터스텔라</p>
+        </div>
+
+        <div class="poster-wrapper">
+            <img id="interstellar" src="/src/interstellar.png" onclick="clickPoster('interstellar')">
+            <img id="martian" src="/src/martian.png" onclick="clickPoster('martian')">
+            <img id="totoro" src="/src/totoro.png" onclick="clickPoster('totoro')">
+            <img id="harry1" src="/src/harry1.png" onclick="clickPoster('harry1')">
+            <img id="harry2" src="/src/harry2.png" onclick="clickPoster('harry2')">
+        </div>
+
+        <div class="content-wrapper">
+            <ul id="content_nav">
+                <li id="content_nav1">줄거리</li>
+                <li id="content_nav2">배우 / 제작진</li>
+                <li id="content_nav3">예고편</li>
+            </ul>
+
+            <div class="content">
+
+                <div class="interstellar-content">
+
+                    <div class="summary">
+                        <p> <strong>“우린 답을 찾을 거야, 늘 그랬듯이”</strong><br>
+                             세계 각국의 정부와 경제가 완전히 붕괴된 미래가 다가온다.
+                             지난 20세기에 범한 잘못이 전 세계적인 식량 부족을 불러왔고, NASA도 해체되었다.
+                             이때 시공간에 불가사의한 틈이 열리고, 남은 자들에게는 이 곳을 탐험해 인류를 구해야 하는 임무가 지워진다.
+                             사랑하는 가족들을 뒤로 한 채 인류라는 더 큰 가족을 위해, 그들은 이제 희망을 찾아 우주로 간다.
+                             그리고 우린 답을 찾을 것이다. 늘 그랬듯이…</p>
+                    </div>
+
+                    <div class="cast">
+                        <h3>감독</h3>
+                        <div class="director">
+                            <img src="/src/director/크리스토퍼_놀란.jpg">
+                            <a>크리스토퍼 놀란</a>
+                            <p>Christoper Nolan</p>
+                        </div>
+                        <h3>배우</h3>
+                        <div class="actor">
+                            <div>
+                                <img src="/src/cast/매튜_맥커너히.jpg">
+                                <a>매튜 맥커너히</a>
+                                <p>Matthew McConaughey</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/앤_해서웨이.jpg">
+                                <a>앤 해서웨이</a>
+                                <p>Anne Hathaway</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/마이클_케인.jpg">
+                                <a>마이클 케인</a>
+                                <p>Michael Caine</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/제시카_차스테인.jpg">
+                                <a>제시카 차스테인</a>
+                                <p>Jessica Chastain</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trailer">
+                        <iframe width="1180" height="664" src="https://www.youtube.com/embed/d2VN6NNa9BE" title="인터스텔라 메인 예고편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="martian-content">
+                    <div class="summary">
+                        <p>
+                            <strong>포기란 없다! <br>
+                            반드시 지구로 돌아갈 것이다!</strong> <br>
+                            NASA 아레스3탐사대는 화성을 탐사하던 중 모래폭풍을 만나고 팀원 마크 와트니가 사망했다고 판단,
+                            그를 남기고 떠난다.
+                            극적으로 생존한 마크 와트니는 남은 식량과 기발한 재치로 화성에서 살아남을 방법을 찾으며
+                            자신이 살아있음을 알리려 노력한다.
+                        
+                            마침내, 자신이 살아있다는 사실을 지구에 알리게 된 마크 와트니
+                        
+                            NASA는 총력을 기울여 마크 와트니를 구출하기 위해 노력하고,
+                            아레스 3 탐사대 또한 그를 구출하기 위해 그들만의 방법을 찾게 되는데……
+                        
+                            전세계가 바라는 마크 와트니의 지구 귀환!
+                            그는 과연 살아 돌아올 수 있을 것인가?
+                        </p>
+                    </div>
+                    <div class="cast">
+                        <h3>감독</h3>
+                        <div class="director">
+                            <img src="/src/director/리들리_스콧.jpg">
+                            <a>리들리 스콧</a>
+                            <p>Ridley Scott</p>
+                        </div>
+                        <h3>배우</h3>
+                        <div class="actor">
+                            <div>
+                                <img src="/src/cast/맷_데이먼.jpg">
+                                <a>맷 데이먼</a>
+                                <p>Matt Damon</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/제시카_차스테인.jpg">
+                                <a>제시카 차스테인</a>
+                                <p>Jessica Chastain</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/세바스찬_스텐.jpg">
+                                <a>세바스찬 스텐</a>
+                                <p>Sebastian Stan</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/제프_다니엘스.jpg">
+                                <a>제프 다니엘스</a>
+                                <p>Jeff Daniels</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/케이트_마라.jpg">
+                                <a>케이트 마라</a>
+                                <p>Kate Mara</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/크리스틴_위그.jpg">
+                                <a>크리스틴 위그</a>
+                                <p>Kristen Wiig</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trailer">
+                        <iframe width="896" height="504" src="https://www.youtube.com/embed/hAWgzLTa3gI" title="[마션] 1차 예고편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="totoro-content">
+                    <div class="summary">
+                        <p>
+                            <strong>숲속에 살고 있는 특별한 친구를 만났다!</strong> <br>
+                            도시를 떠나 시골로 이사 온 ‘사츠키’와 ‘메이’는 우연히 숲속에 살고 있는 신비로운 생명체 ‘토토로’를 만나 신비한 모험을 함께 한다.
+                            그러던 어느 날, 어머니의 병원에서 위태로운 소식이 도착하고 언니 ‘사츠키’가 정신없이 아빠에게 연락을 취하는 와중에 ‘메이’가 행방불명 되는데…
+                        </p>
+                    </div>
+                    <div class="cast">
+                        <h3>감독</h3>
+                        <div class="director">
+                            <img src="/src/director/미야자키_하야오.jpg">
+                            <a>미야자키 하야오</a>
+                            <p>Hayao Miyazaki</p>
+                        </div>
+                        <h3>배우</h3>
+                        <div class="actor">
+                            <div>
+                                <img src="http://placehold.it/100">
+                                <a>히다가 노리코</a>
+                                <p>Noriko Hidaka</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/사카모토_치카.jpg">
+                                <a>사카모토 치카</a>
+                                <p>Chika Sakamoto</p>
+                            </div>
+                            <div>
+                                <img src="http://placehold.it/100">
+                                <a>타카기 히토시</a>
+                                <p>Hitoshi Takagi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trailer">
+                        <iframe width="896" height="504" src="https://www.youtube.com/embed/yrqmx630BIA" title="★이웃집 토토로★ 메인 예고편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="harry1-content">
+                    <div class="summary">
+                        <p>해리 포터(다니엘 래드클리프 분)는 위압적인 버논 숙부(리챠드 그리피스 분)와 냉담한 이모 페투니아 (피오나 쇼 분), 욕심 많고 버릇없는 사촌 더즐리(해리 멜링 분) 밑에서 갖은 구박을 견디며 계단 밑
+                            벽장에서 생활한다. 이모네 식구들 역시 해리와의 동거가 불편하기는 마찬가지. 이모 페투니아에겐 해리가 이상한(?) 언니 부부에 관한 기억을 떠올리게 만드는 달갑지 않은 존재다. 11살 생일이 며칠 앞으로
+                            다가왔지만 한번도 생일파티를 치르거나 제대로 된 생일선물을 받아 본 적이 없는 해리로서는 특별히 신날 것도 기대 할 것도 없다. 11살 생일을 며칠 앞둔 어느 날 해리에게 초록색 잉크로 쓰여진 한 통의 편지가
+                            배달된다. 그 편지의 내용은 다름 아닌 해리의 11살 생일을 맞이하여 전설적인“호그와트 마법학교”에서 보낸 입학초대장이었다. 그리고 해리의 생일을 축하하러 온 거인 해그리드는 해리가 모르고 있었던 해리의
+                            진정한 정체를 알려주는데. 그것은 바로 해리가 굉장한 능력을 지닌 마법사라는 것! <br><br>
+                            해리는 해그리드의 지시대로 자신을 구박하던 이모네 집을 주저없이 떠나 호그와트행을 택한다. 런던의 킹스크로스 역에 있는 비밀의 9와 3/4 승장장에서 호그와트 특급열차를 탄 해리는 열차 안에서 같은 호그와트
+                            마법학교 입학생인 헤르미온느 그레인저(엠마 왓슨 분)와 론 위즐리 (루퍼트 그린트 분)를 만나 친구가 된다. 이들과 함께 호그와트에 입학한 해리는, 놀라운 모험의 세계를 경험하며 갖가지 신기한 마법들을 배워
+                            나간다. 또한 빗자루를 타고 공중을 날아다니며 경기하는 스릴 만점의 퀴디치 게임에서 스타로 탄생하게 되며, 용, 머리가 셋 달린 개, 유니콘, 켄타우루스, 히포그리프(말 몸에 독수리 머리와 날개를 가진
+                            괴물)등 신비한 동물들과 마주치며 모험을 즐긴다. 그러던 어느 날 해리는 호그와트 지하실에 `영원한 생을 가져다주는 마법사의 돌'이 비밀리에 보관되어 있다는 것을 알게되고, 해리의 부모님을 죽인 볼드모트가 그
+                            돌을 노린다는 사실도 알게 된다. 볼드모트는 바로 해리를 죽이려다 실패하고 이마에 번개모양의 흉터를 남긴 장본인이다. 해리는 볼드모트로부터 마법의 돌과 호그와트 마법학교를 지키기 위해 필사의 노력을
+                            하는데...</p>
+                    </div>
+                    <div class="cast">
+                        <h3>감독</h3>
+                        <div class="director">
+                            <img src="/src/director/크리스_콜럼버스.jpg">
+                            <a>크리스 콜럼버스</a>
+                            <p>Chris Columbus</p>
+                        </div>
+                        <h3>배우</h3>
+                        <div class="actor">
+                            <div>
+                                <img src="/src/cast/다니엘_레드클리프.jpg">
+                                <a>다니엘 레드클리프</a>
+                                <p>Daniel Radcliffe</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/루퍼트_그린트.jpg">
+                                <a>루퍼트 그린트</a>
+                                <p>Rupert Grint</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/엠마_왓슨.jpg">
+                                <a>엠마 왓슨</a>
+                                <p>Emma Watson</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/로비_콜트레인.jpg">
+                                <a>로비 콜트레인</a>
+                                <p>Robbie Coltrane</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/리처드_해리스.jpg">
+                                <a>리처드 해리스</a>
+                                <p>Robbie Coltrane</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/앨런_릭먼.jpg">
+                                <a>앨런 릭먼</a>
+                                <p>Alan Rickman</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/이안_하트.jpg">
+                                <a>이안 하트</a>
+                                <p>Ian Hart</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/톰_펠튼.jpg">
+                                <a>톰 펠튼</a>
+                                <p>Tom Felton</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="trailer">
+                        <iframe width="669" height="376" src="https://www.youtube.com/embed/KxDbaP-k6i4" title="해리포터와 마법사의 돌 | 4DX 30초 예고편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="harry2-content">
+                    <div class="summary">
+                        <p>
+                            해리 포터 일생일대 최대 난관!
+                            요즘 들어 매일 꾸는 악몽 때문에 이마의 상처에 더욱 통증을 느끼는 해리(다니엘 래드클래프)는 친구 론(루퍼트 그린트)과 헤르미온느(엠마 왓슨)와 함께 퀴디치 월드컵에 참가해 악몽에서 벗어날 수 있게 돼 마냥 기쁘다. 그러나 퀴디치 캠프장 근방 하늘에 불길한 기운, 바로 마왕 볼드모트의 상징인 '어둠의 표식'이 나타난다. 볼드모트가 13년 전에 자취를 감춘 뒤 감히 모습을 드러내지 못했던 그의 추종자 데스 이터들이 그 표식을 불러낸 것이다. 두려움으로 가득 찬 해리는 안전한 호그와트 마법학교로 돌아가고 싶어한다. 덤블도어 교장(마이클 갬본 경)이라면 자신을 지켜줄 수 있을 것이기에….
+                            <br><br>
+                            최강의 챔피언을 찾아라! 트리위저드 마법경연대회!
+                            그러나 올해는 예년과 상황이 좀 다르다. 덤블도어 교장은 유럽의 세 개 명문 마법학교의 결속을 다지기 위해 그간 중단됐던 호그와트에서 '트리위저드 대회'를 개최한다고 발표한다. 트리위저드 대회는 마법의 최고 명문 3개 학교에서 선발된 챔피언 한 명씩 출전해 트리위저드 컵을 놓고 목숨을 건 경합을 벌이는 마법사들 세계에서 가장 흥미진진하고 위험한 마법경연대회. 마법의 '불의 잔'이 각 학교 출전자를 선발하는 의식이 열리고 현란한 불꽃의 축제 속에 불의 잔은 마침내 세 학생의 이름을 호명한다. 강인한 불가리아 덤스트랭 학교의 퀴디치 경기 슈퍼스타인 빅터 크룸(스타니슬라브 이아네브스키)과 우아한 보바통 마법아카데미의 플뢰르 델라쿠르(클레멘스 포에시), 그리고 호그와트의 최고 인기남 케드릭 디고리(로버트 패틴슨). 그러나 세 명의 이름이 다 호명된 후, 뜻밖에도 불의 잔은 또 한 명의 이름을 내뱉는다. 바로 '해리포터'!
+                            <br><br>
+                            피할 수 없는 숙명의 대결!
+                            그러나 해리는 시합 출전자의 나이 제한인 17세보다 세 살이나 어린 14세. 게다가 불의 잔 속에 자신의 이름을 넣은 적이 없다며 거부하지만 불의 잔의 단호한 뜻에 따라 어쩔 수 없이 출전하게 된다. 이 일로 해리에겐 의혹과 시기의 시선이 집중되고 추문 폭로기사 전문기자 리타 스키터는 해리에 대한 모함성 기사를 써서 이를 더욱 부채질한다. 친구 론마저도 해리가 유명해지고 싶어서 불의 잔을 조작했다고 믿기 시작한다. 해리를 위험에 처한 누군가의 음모라고 생각한 덤블도어 교장은 신임 '어둠의 마법 방어술' 교수 '매드아이 무디'(브랜든 글리슨)에게 해리를 잘 지키라고 지시한다. 해리는 트리위저드 대회의 불 뿜는 용 피하기, 거대한 호수 깊이 잠수하기, 살아있는 미로를 빠져 나오기라는 세가지 과제에 대비한 마법 훈련에 돌입한다. 그러나 그보다 해리에게 더 힘든 숙제는 크리스마스 무도회에 함께 참석할 파트너를 구하는 문제다. 해리에겐 용이나 인어, 그라인딜로우와 싸우는 편이 사랑스러운 여학생 초 챙(케이티 렁)에게 무도회의 파트너가 돼달라고 부탁하는 것보다 훨씬 쉬운 일. 한편 론은 헤르미온느에 대한 자신의 감정이 예전과 다르다는 걸 미처 깨닫지 못하고…
+                            <br><br>
+                            불의 잔을 향한 최강의 스펙터클이 펼쳐진다!
+                            그러던 중 호그와트 교정에서 누군가 살해되면서 상황은 급변한다. 볼드모트의 악몽으로 두려움에 휩싸인 해리는 덤블도어를 찾아가지만 그 역시도 뚜렷한 해답을 제시하지 못한다. 경기가 진행되고 해리와 다른 출전자들이 마지막 과제를 풀기 위해 안간힘을 쓰고 있을 때 무언가가 계속 이들을 주시한다. 승리가 목전에 다가온 그 순간, 이제까지의 모든 진실이 밝혀지고 해리포터에게는 진정한 악과의 피할 수 없는 대결이 기다리고 있는데….  
+                        </p>
+                    </div>
+                    <div class="cast">
+                        <h3>감독</h3>
+                        <div class="director">
+                            <img src="/src/director/마이크_뉴웰.jpg">
+                            <a>마이크 뉴웰</a>
+                            <p>Mike Newell</p>
+                        </div>
+                        <h3>배우</h3>
+                        <div class="actor">
+                            <div>
+                                <img src="/src/cast/다니엘_레드클리프.jpg">
+                                <a>다니엘 레드클리프</a>
+                                <p>Daniel Radcliffe</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/엠마_왓슨.jpg">
+                                <a>엠마 왓슨</a>
+                                <p>Emma Watson</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/루퍼트_그린트.jpg">
+                                <a>루퍼트 그린트</a>
+                                <p>Rupert Grint</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/케이티_렁.jpg">
+                                <a>케이티 렁</a>
+                                <p>Katie Leung</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/랄프_파인즈.jpg">
+                                <a>랄프 파인즈</a>
+                                <p>Ralph Fiennes</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/톰_펠튼.jpg">
+                                <a>톰 펠튼</a>
+                                <p>Tom Felton</p>
+                            </div>
+                            <div>
+                                <img src="/src/cast/브렌단_글리슨.jpg">
+                                <a>브렌단 글리슨</a>
+                                <p>Brendan Gleeson</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trailer"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function clickPoster(clickId) {
+            let bannerSrc = '/src/' + clickId + '-banner.png';
+            let bannerTitle;
+
+            switch (clickId) {
+                case 'interstellar':
+                    bannerTitle = '인터스텔라';
+                    break
+                case 'martian':
+                    bannerTitle = '마션';
+                    break
+                case 'totoro':
+                    bannerTitle = '이웃집 토토로';
+                    break
+                case 'harry1':
+                    bannerTitle = '해리포터와 마법사의 돌';
+                    break
+                case 'harry2':
+                    bannerTitle = '해리포터와 불의 잔';
+                    break
+            }
+
+            document.getElementById('banner_img').src = bannerSrc;
+            document.getElementById('banner_title').innerHTML = bannerTitle;
+        }
+
+        function clickPosterToContent(clickId) {
+
+        }
+    </script>
+</body>
+</html>

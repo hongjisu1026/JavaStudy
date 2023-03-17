@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let max = function (array) {
+            let maxNum = array[0];
+
+            for (const i of array) {
+                if (maxNum < i) {
+                    maxNum = i;
+                }
+            }
+
+            return maxNum;
+        }
+        console.log(max([1, 2, 3, 4]));
+        
+        max = function (...nums) {
+            let maxNum = nums[0];
+
+            for (const i of nums) {
+                if (maxNum < i) {
+                    maxNum = i;
+                }
+            }
+
+            return maxNum;
+        }
+        console.log(max(1, 2, 3, 4));
+
+        max = function (array, ...nums) {
+            let maxNum;
+            let items;
+
+            if (Array.isArray(array)) {
+                maxNum = array[0];
+                items = array;
+            } else {
+                maxNum = array;
+                items = nums;
+            }
+
+            for (const i of items) {
+                if (maxNum < i) {
+                    maxNum = i;
+                }
+            }
+
+            return maxNum;
+        }
+        console.log(max([1, 2, 3, 4]));
+        console.log(max(1, 2, 3, 4));
+    </script>
+</body>
+</html>

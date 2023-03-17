@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const words = ['banana', 'apple', 'orange'];
+        let word = words[parseInt(Math.random() * (words.length + 1))];
+
+        ((msg) => {
+            console.log(msg);
+
+            alert(submitProblem());
+        })('start');
+
+        function submitProblem() {
+            let problem;
+
+            for (let i = 0; i < word.length; i++) {
+                problem += '_ ';
+            }
+
+            return problem;
+        }
+
+
+        
+    </script>
+</body>
+</html>

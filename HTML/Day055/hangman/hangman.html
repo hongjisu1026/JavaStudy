@@ -127,6 +127,13 @@
     </div>
     
     <script>
+        const wordData = [
+            'about', 'across', 'address', 'afraid', 'after', 'afternoon', 'again', 'airport', 'album', 'always',
+            'angry', 'animal', 'answer', 'apartment', 'apple', 'around', 'arrive', 'autumn', 'balloon', 'banana',
+            'computer', 'country', 'friend', 'thousand', 'picture', 'through', 'pocket', 'thirsty', 'laugh', 'curtain',
+            'tomorrow', 'tonight', 'hamburger', 'listen', 'course', 'beautiful', 'grandmother', 'grandfather', 'bicycle', 'problem',
+            'basket', 'ground', 'exercise', 'shoulder', 'toghether', 'morning', 'rainbow', 'daughter', 'yesterday', 'mountain'
+        ]
         let word;
         let count = 0;
         (function (msg) {
@@ -136,26 +143,18 @@
             word = submitProblem();
         })('start');
 
-        function initDataToArray() {
-            const data = 'about,across,address,afraid,after,afternoon,again,airport,album,always,angry,animal,answer,apartment,apple,around,arrive,autumn,balloon,banana,computer,country,friend,thousand,picture,through,pocket,thirsty,laugh,curtain,tomorrow,tonight,hamburger,listen,course,beautiful,grandmother,grandfather,bicycle,problem,basket,ground,exercise,shoulder,toghether,morning,rainbow,daughter,yesterday,mountain';
-            const wordArr = data.split(',');
-
-            return wordArr;
-        }
-
         function submitProblem() {
-            const wordArr = initDataToArray();
-            const index = parseInt(Math.random() * (wordArr.length + 1));
+            const index = parseInt(Math.random() * (wordData.length + 1));
 
-            let word = wordArr.splice(index, 1);
-            word = word[0];
-
+            let word = wordData[index];
             let insertAlphabet = '';
+
             for (let i = 0; i < word.length; i++) {
                 insertAlphabet += `<div id=${i}>_</div>`;
             }
-
             document.getElementsByClassName('alphabet')[0].innerHTML = insertAlphabet;
+
+            console.log(word);
 
             return word;
         }
