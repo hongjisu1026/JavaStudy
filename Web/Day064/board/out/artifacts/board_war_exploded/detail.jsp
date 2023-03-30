@@ -71,11 +71,9 @@
     </tr>
 </table>
 <button><a href="./index.jsp">목록</a></button>
-<form method="post" action="edit.jsp">
-    <input type="button" value="수정">
-</form>
-<form method="post" action="delete.jsp">
-    <input type="button" value="삭제">
-</form>
+<%
+    out.print("<button><a href=\"http://localhost:8080/board/edit.jsp?no=" + no + "\">수정</a> </button>");
+    out.print("<button><a href=\"http://localhost:8080/board/delete.jsp?no=" + no + "\">삭제</a> </button>");
+%>
 </body>
 </html>

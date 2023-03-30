@@ -24,12 +24,10 @@
     request.setCharacterEncoding("UTF-8");
     String title = request.getParameter("title");
     String name = request.getParameter("name");
-    Timestamp date = new Timestamp(System.currentTimeMillis());
     String pwd = request.getParameter("pwd");
     String content = request.getParameter("content");
-    int view = 0;
 
-    String SQL = "insert into board values (null, ?, ?, ?, ?, ?, ?)";
+    String SQL = "insert into board (title, name, content, password) values (?, ?, ?, ?)";
 %>
 
 <%
@@ -43,10 +41,8 @@
          PreparedStatement pstmt = conn.prepareStatement(SQL)) {
         pstmt.setString(1, title);
         pstmt.setString(2, name);
-        pstmt.setTimestamp(3, date);
-        pstmt.setString(4, content);
-        pstmt.setString(5, pwd);
-        pstmt.setInt(6, view);
+        pstmt.setString(3, content);
+        pstmt.setString(4, pwd);
 
         pstmt.execute();
     } catch (SQLException e) {
