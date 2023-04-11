@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="08bd621c-66d4-4290-8fa6-615d10c3ec8e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Day067/Test/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/checkPassword.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/delete.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/detail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/insert.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/write.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day064/board/out/artifacts/board_war_exploded/write.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/web/checkPassword.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/web/delete.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/web/detail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/web/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/web/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/web/insert.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day064/board/web/write.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2NzINgUpF4wJHPbs5qFaXJ1rhGF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/JavaStudy/Java/Web/Day069/Member",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08bd621c-66d4-4290-8fa6-615d10c3ec8e" name="Changes" comment="" />
+      <created>1680660452142</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680660452142</updated>
+      <workItem from="1680660452144" duration="171000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
